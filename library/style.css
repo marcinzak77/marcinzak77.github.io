@@ -152,7 +152,7 @@ body {
   position: relative; }
 
 .datatable__tasks-container:empty::after {
-  content: 'Currently, there are no rekords available.'; }
+  content: 'Currently, there are no records available.'; }
 
 .template {
   display: none; }
