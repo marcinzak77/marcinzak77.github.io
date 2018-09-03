@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var apiRoot = 'http://localhost:8080/library/';
+  var apiRoot = 'https://demo-app-library.herokuapp.com/library/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var userContainer = $('[data-user-container]');
 
