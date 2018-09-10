@@ -5,11 +5,11 @@ $(document).ready(function() {
   var libsContainer = $('[data-books-container]');
   
   var availableBooks = {};
-  var availableReaders = {};
+ // var availableReaders = {};
 
   // init
     getAllBooks();
-    getAllReaders();
+ //   getAllReaders();
 
   function createBookElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -37,14 +37,14 @@ $(document).ready(function() {
     });
   }
 
-  function prepareUsersSelectOptions(availableUsers) {
-    return availableUsers.map(function(choice) {
-      return $('<option>')
-                .addClass('crud-select__option')
-                .val(choice.readerId)
-                .text(choice.surname || 'Unknown name');
-    });
-  }
+  // function prepareUsersSelectOptions(availableUsers) {
+  //   return availableUsers.map(function(choice) {
+  //     return $('<option>')
+  //               .addClass('crud-select__option')
+  //               .val(choice.readerId)
+  //               .text(choice.surname || 'Unknown name');
+  //   });
+  // }
 
    function getAllBooks() {
     var requestUrl = apiRoot + 'getBooks';
@@ -56,20 +56,20 @@ $(document).ready(function() {
     });
   }
 
-  function getAllReaders() {
-    var requestUrl = apiRoot + 'getUsers';
+//   function getAllReaders() {
+//     var requestUrl = apiRoot + 'getUsers';
 
-    $.ajax({
-      url: requestUrl,
-      method: 'GET',
-      success: function(users) {
-       users.forEach(user => {
-        availableReaders[user.readerId] = user; }
-        )
-}
+//     $.ajax({
+//       url: requestUrl,
+//       method: 'GET',
+//       success: function(users) {
+//        users.forEach(user => {
+//         availableReaders[user.readerId] = user; }
+//         )
+// }
 
-      });
-  }
+//       });
+//   }
 
   function handleDatatableRender(books) {
     libsContainer.empty();
@@ -136,14 +136,14 @@ $(document).ready(function() {
 
 
 
- function handleBoardNameSelect(event) {
-    var $changedSelectEl = $(event.target);
-    var selectedUserId = $changedSelectEl.val();
-    var $listNameSelectEl = $changedSelectEl.siblings('[data-list-name-select]');
-    var preparedListOptions = prepareUsersSelectOptions(availableReaders);
+ // function handleBoardNameSelect(event) {
+ //    var $changedSelectEl = $(event.target);
+ //    var selectedUserId = $changedSelectEl.val();
+ //    var $listNameSelectEl = $changedSelectEl.siblings('[data-list-name-select]');
+ //    var preparedListOptions = prepareUsersSelectOptions(availableReaders);
 
-    $listNameSelectEl.empty().append(preparedListOptions);
-  }
+ //    $listNameSelectEl.empty().append(preparedListOptions);
+ //  }
 
 function handleBookRentRequest(event) {
     // nothing yet
@@ -152,6 +152,6 @@ function handleBookRentRequest(event) {
   $('[data-book-add-form]').on('submit', handleBookSubmitRequest);
 
   libsContainer.on('click','[data-book-rent-request-trigger]', handleBookRentRequest);
-  libsContainer.on('change','[data-book-name-select]', handleBoardNameSelect);
+//  libsContainer.on('change','[data-book-name-select]', handleBoardNameSelect);
   libsContainer.on('click','[data-task-delete-button]', handleBookDeleteRequest);
 });
